@@ -69,5 +69,16 @@
         },
         "order": 3,
         "requiredPrivilege": "Edit Visits"
+    },
+    "vitals": {
+      "id": "bahmni.registration.conceptSetGroup.vitals",
+      "extensionPointId": "org.bahmni.registration.conceptSetGroup.observations",
+      "type": "config",
+      "extensionParams": {
+        "default": true,
+        "conceptName": "Vitals"
+      },
+      "order": 4,
+      "requiredPrivilege": "Edit Visits"
     }
 }
