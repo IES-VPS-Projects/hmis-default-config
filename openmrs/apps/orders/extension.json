@@ -14,5 +14,21 @@
 	 "label": "Radiology Order",
 	 "order": 1,
 	 "requiredPrivilege": "app:orders"
-	 }
+	 },
+        "bahmniClinicalPatientsSearchRadiologyOrderServedPatients":{
+         "id": "bahmni.clinical.patients.search.RadiologyOrderServedPatients",
+         "extensionPointId": "org.bahmni.patient.search",
+         "type": "config",
+         "extensionParams": {
+          "searchHandler": "emrapi.sqlSearch.servedRadiologyPatients",
+          "display":"Served Patients",
+           "translationKey": "Served Patients",
+          "forwardUrl" : "../orders/#/patient/{{patientUuid}}/fulfillment/Radiology Order",
+          "forwardButtonTitle" : "View",
+          "view":"tabular"
+         },
+         "label": "Served Patients",
+         "order": 2,
+         "requiredPrivilege": "app:orders"
+         }
 }

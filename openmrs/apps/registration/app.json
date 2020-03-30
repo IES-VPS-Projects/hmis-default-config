@@ -30,9 +30,45 @@
                         "cluster"
                     ]
                 },
+		"otherDetails":{
+                	"translationKey": "Other Details",
+               		"title":"Other Details",
+	                "attributes":["occupation","education","HIVTC, Marital Status","nextOfKinIdentifierType","patientid_number","patientid","religion"],
+        	        "order" : 1
+                },
+                "referrals":{
+                    "translationKey":"Referrals",
+                        "title":"Referrals",
+                        "attributes":["referalCase","referralFacility","otherFacility"
+                    ],"order" : 4
+                },
+		"contactdetails":{
+		    "translationKey":"Contact Details",
+			"title":"Contact Details",
+			"attributes":["mobileNo","postaddres","email"
+		    ],"order" : 2
+		},
+                "payments":{
+                "translationKey": "Payments",
+               "title":"Payments",
+                "attributes":["modeOfPayment","exemption","exemptionReason"],
+                "order" : 5},
+
+                "nextOfKin":{
+                "translationKey": "Next Of Kin",
+               "title":"Next Of Kin",
+                "attributes":["relationshiptype","nextOfKinFirstName","nextOfKinLastName","nextOfKinPhoneNumber","nextOfKinIdentifier"],"order" : 3
+                },
+				"OtherLocationAddresses":{
+				"translationKey": "Other Location Addresses",
+				"title":"Other Location Addresses",
+				"attributes":["Country","County","Constituency","Village"],
+				"order" : 1},
                 "hidden": {
                     "attributes": [
-                        "primaryContact"
+                        "primaryContact",
+			"secondaryIdentifier",
+			"Additional Identifiers"
                     ]
                 },
                 "defaults":  {
@@ -56,15 +92,10 @@
             "showMiddleName": true,
             "showLastName": true,
             "isLastNameMandatory": true,
-            "showSaveConfirmDialog": false,
             "showBirthTime": true,
             "showCasteSameAsLastNameCheckbox": false,
             "printOptions": [
-                {
-                    "translationKey": "REGISTRATION_PRINT_REG_CARD_LOCAL_KEY",
-                    "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print_local.html",
-                    "shortcutKey": "l"
-                },
+                
                 {
                     "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
                     "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print.html",
@@ -91,7 +122,7 @@
                 },
                 "defaults":{
                     "FHS": "Present"
-                }
+                },"Physiotherapy Interventions":{"multiSelect" : true}
             },
             "fieldValidation" : {
                 "primaryContact" : {"pattern" : "[0-9]{8,10}", "errorMessage" : "Should be 12 characters starting with 91 (country code)"},
@@ -99,19 +130,16 @@
                 "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
                 "givenName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
                 "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-                "address1" : {"pattern" : "[a-zA-Z0-9\\s]{2,}", "errorMessage" : "Should contain at least 2 characters"}
+                "address1" : {"pattern" : "[a-zA-Z0-9]{3}", "errorMessage" : "Should contain 3 characters"},
+                "patientid_number":{"pattern" : "[a-zA-Z0-9]{4,8}", "errorMessage" : "Should contain 4 to 8 digits"}
             },
-            "patientSearch": {
-                "address": {
-                    "label": "Rural Ward",
-                    "placeholder": "Enter ward",
-                    "field": "address2"
-                },
-                "customAttributes": {
-                    "label": "रुग्णाचे नाव",
-                    "placeholder": "रुग्णाचे नाव",
-                    "fields": ["givenNameLocal", "middleNameLocal", "familyNameLocal"]
-                }
-            }
+            
+            "showBirthTime": false,
+            "dobMandatory": true,
+	"showEnterID":false,
+    "Vitals,Experince Cough":{"required":true},
+    "mandatoryPersonAttributes": ["modeOfPayment"],
+	"Experince Cough":{"required": true},
+	"HEIGHT":{"required": true}
         }
 }

@@ -44,18 +44,7 @@
         },
         "order": 1,
         "requiredPrivilege": "Edit Visits"
-    },
-    "feeInformation":{
-        "id": "bahmni.registration.conceptSetGroup.feeInformation",
-        "extensionPointId": "org.bahmni.registration.conceptSetGroup.observations",
-        "type": "config",
-        "extensionParams": {
-            "conceptName": "Fee Information",
-            "translationKey": "FEE_INFORMATION_LOCALE_KEY",
-            "required":true
-        },
-        "order": 2,
-        "requiredPrivilege": "Edit Visits"
+   
     },
     "nutritionalValue":{
         "id": "bahmni.registration.conceptSetGroup.nutritionalValue",
@@ -69,5 +58,22 @@
         },
         "order": 3,
         "requiredPrivilege": "Edit Visits"
-    }
+    },
+    "vitals": {
+      "id": "bahmni.registration.conceptSetGroup.vitals",
+      "extensionPointId": "org.bahmni.registration.conceptSetGroup.observations",
+      "type": "config",
+      "extensionParams": {
+        "default": true,
+        "conceptName": "Vitals"
+      },
+      "order": 4,
+      "requiredPrivilege": "Edit Visits"
+    },
+	
+	"Experince Cough":{"required": true},
+	"Vitals,Experince Cough":{"required":true},
+	"Systolic Data":{"required": true},
+	"HEIGHT":{"required": true}
+	
 }

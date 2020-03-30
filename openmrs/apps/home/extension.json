@@ -29,6 +29,26 @@
     "order": 3,
     "requiredPrivilege": "app:clinical"
   },
+  "bahmniTriage": {
+    "id": "bahmni.triage",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "label": "Triage",
+    "url": "../clinical/#/default/patient/search",
+    "icon": "icon-bahmni-registration",
+    "order": 3,
+    "requiredPrivilege": "app:triage"
+  },
+  "bahmniPharmacy": {
+    "id": "bahmni.pharmacy",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "label": "Pharmacy",
+    "url": "../clinical/#/default/patient/search",
+    "icon": "fa-stethoscope",
+    "order": 4,
+    "requiredPrivilege": "app:pharmacy"
+  },
   "adt": {
     "id": "bahmni.adt",
     "extensionPointId": "org.bahmni.home.dashboard",

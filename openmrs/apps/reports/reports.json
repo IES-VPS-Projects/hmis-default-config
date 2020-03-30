@@ -1,4 +1,104 @@
 {
+    "moh717Outpatients": {
+    "name": "MOH 717 - Outpatient Services",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/outpatients.sql"
+    }
+    },
+    "moh706Labaratory":{
+    "name":"MOH 706 - SPECIMEN REFERRAL TO HIGHER LEVELS",
+    "type":"ElisGeneric",
+    "config":{"forDataAnalysis": true,
+	      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/specimenreferral.sql"
+     }
+
+     },
+	"Bacteriology":{
+    "name": "MOH 706 Bacteriology ",
+    "type": "ElisGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/Bacteriology.sql"}},
+		
+    "moh717Inpatients": {
+    "name": "MOH 717 - Inpatient Services",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/inpatients.sql"}
+    },
+	"HistologyandCytology":{"name": "MOH 706 Histology and Cytology",
+    "type": "ElisGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/HistologyandCytology.sql"
+    }},
+	"moh717-Maternity": {
+    "name": "MOH 717 Maternity",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/maternity.sql"
+    }
+    },
+    "moh717-Operations": {
+        "name": "MOH 717 Operations",
+        "type": "MRSGeneric",
+        "config": {
+            "forDataAnalysis": true,
+                "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/operations.sql"
+        }
+    },
+    "moh717-Mortury": {
+        "name": "MOH 717 Mortury",
+        "type": "MRSGeneric",
+        "config": {
+            "forDataAnalysis": true,
+                "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/mortury.sql"
+        }
+    },
+    "moh717-MedicalRecords": {
+        "name": "MOH 717 Medical Records",
+        "type": "MRSGeneric",
+        "config": {
+            "forDataAnalysis": true,
+                "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/medical_records.sql"
+        }
+    },
+    "moh705A": {
+    "name": "MOH 705 A(Under Five) ",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/705A.sql"
+    }
+    },
+    "moh705B": {
+    "name": "MOH 705 B (Over Five) ",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/705B.sql"
+    }
+    },
+    "moh7IIB": {
+    "name": "MOH 711B",
+    "type": "MRSGeneric",
+    "config": {
+        "forDataAnalysis": true,
+        "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711B.sql"
+    }
+    },
+    "urineanalysis":{
+    "name":"Urine Analysis",
+    "type":"MRSGeneric",
+    "config":{
+         "forDataAnalysis":true,
+	 "sqlPath":"/var/www/bahmni_config/openmrs/apps/reports/sql/urineanalysis.sql"
+    }
+    },
     "visitReport10": {
         "name": "Visit Report",
         "type": "visits",

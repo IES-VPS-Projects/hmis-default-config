@@ -58,7 +58,8 @@
             		"Stage"
         		],
         		"personAttributes": [
-            		"class",
+            		"allergies",
+                        "class",
             		"caste"
         		],
         		"additionalPatientIdentifiers": [
@@ -86,7 +87,8 @@
                 "codedConceptName":"Chief Complaint",
                 "nonCodedConceptName":"Non-Coded Chief Complaint",
                 "durationRequired": false,
-                "allowAddMore": true
+                "allowAddMore": true,
+		"required":true
             },
             "Tuberculosis, Adverse Effects" :{
                 "multiSelect" : true,
@@ -116,10 +118,16 @@
             "Set2": {
                 "allowAddMore": true
             },
+           "Examination Notes": {
+                "allowAddMore": true
+            },
             "Coded3": {
                 "multiSelect": true
             },
             "Image": {
+                "allowAddMore": true
+            },
+            "ANC, History of previous pregnancies": {
                 "allowAddMore": true
             },
             "Gynaecology, Gravida": {
@@ -128,6 +136,103 @@
             "Accepted Family Planning methods": {
                 "multiSelect": true
             },
+            "Major Eye Procedures": {
+                "multiSelect": true
+            },
+            "Minor Eye Procedure": {
+                "multiSelect": true
+            },
+            "Eye Examination": {
+                "type": "grid"
+            },
+            "Natural Methods" : {
+                "multiSelect": true
+            },
+            "STI Screening": {
+                "multiSelect": true
+            },
+			"Physiotherapy Interventions" :{"multiSelect": true
+			},
+			"Nutrition, Nutritional Status":{"dropdown": true},
+			"CWC vitamin,Age":{"dropdown": true},
+			"CWC, Dose":{"dropdown": true},
+			"Nutrition, Sero Status":{"dropdown": true},
+			"Nutrition, For SAM/MAM":{"dropdown": true},
+			"Nutrition, Co-existing conditions":{"multiSelect": true},
+			"Metabolic Disorder":{"multiSelect": true},
+			"Allergies Intolerance":{"multiSelect": true},
+			"Service Rendered":{"dropdown": true},
+			"Nutrition,Infant feeding":{"dropdown": true},
+			"Occupational Intervention":{"multiSelect": true},"Fabrication":{"dropdown": true},
+			"Nutrition, Anaemia":{"dropdown": true},
+			"Critical Nutritional Practices":{"multiSelect": true},
+			"Critical Nutritional Practices":{"multiSelect":true},
+			"Observation,Major Eye Procedure":{"multiSelect":true},
+			"Observation,Minor Eye Procedure":{"multiSelect":true},
+			"ANC, Birth Weight":{"allowAddMore": true},
+			"ANC, Micro-nutrients Supplements":{"multiSelect":true},
+			"ANC Action":{"dropdown": true},
+			"PNC,Mother Exit":{"dropdown": true},
+			"Pnc,Child Exit":{"dropdown": true},
+			"ANC Expected Delivery Date":{"allowFutureDates":true},
+			"Family Planning Appointment Date":{"allowFutureDates":true},
+			"ANC, Date of Next Visit":{"allowFutureDates":true},
+			"LMP":{"allowFutureDates":true},
+			"ANC, IPT Ionized Date Given":{"allowFutureDates":true},
+			"ANC, Next Visit":{"allowFutureDates":true,"required":true},
+			"CWC Vit, Date of Next Visit":{"allowFutureDates":true},
+			"Tuberculosis, Symptoms":{"multiSelect":true,"allowAddMore": true},
+			"Tuberculosis, Next Followup Visit":{"allowFutureDates":true},
+			"Tuberculosis, Comorbidity":{"multiSelect":true},
+			"next appointment":{"allowFutureDates":true},
+			"TB Screening":{"required": true},
+			"Experince Cough":{"required": true},				
+			"Vitals,Experince Cough":{"required":true},
+			"Development milestone CWC":{"dropdown":true},
+			"CWC, Normal Limits":{"dropdown":true},
+			"Physio Next Appointment Date":{"allowFutureDates":true},
+			"Major Eye Procedures" :{"multiSelect":true},
+			"Nutrition, Micronutrients":{"multiSelect":true},
+			"Nutrition Referrals":{"dropdown": true},
+			"TCA":{"dropdown": true},
+			"TCA Date":{"allowFutureDates":true},
+			"Nutrition, Designation":{"dropdown": true},
+			"ANC Action":{"dropdown": false},
+			"ANC Action":{"multiSelect":true},
+			"Systolic Data":{"required": true},
+			"FP,Children Age":{"allowAddMore": true},
+			"Immunization, Age Given":{"dropdown":true},
+			"Yellow Fever, Age Given":{"dropdown":true},
+			"DNA, DNA PCR Taken at ?":{"dropdown":true},
+			"Immunization, Date of Next Appointment":{"allowFutureDates":true},
+			"IMCI, Date Of Next Appointment":{"allowFutureDates":true},
+			"FP, Date Of Next Visit":{"allowFutureDates":true},
+			"BCG, Age Administered":{"dropdown":true},
+			"Polio, Age of Administration":{"dropdown":true},
+			"OPV, Age Of Administration":{"dropdown":true},
+			"IPV, Age Of Administration":{"dropdown":true},
+			"DPT/Hep.B/Hib, Age of Administration":{"dropdown":true},
+			"PCV 10, Age Administered":{"dropdown":true},
+			"Rota, Age Administered":{"dropdown":true},
+			"IMCI, Refer to Clinic":{"dropdown":true},
+			"IMCI, Follow up in":{"dropdown":true},
+			"IMCI, General Danger Signs":{"multiSelect":true},
+			"IMCI, Diarrhoea Symptoms":{"multiSelect":true},
+			"IMCI, Symptoms":{"multiSelect":true},
+			"IMCI, Counseling Purpose":{"multiSelect":true},
+			"FP,If Not":{"dropdown":true},
+			"FP,If Yes":{"dropdown":true},
+			"Reason for Eligibility":{"dropdown":true},
+			"FP, Implants Expiry Date":{"allowFutureDates":true},
+			"FP,Current Method":{"multiSelect":true},
+			"Mental, Mood":{"multiSelect":true},
+			"Observation,Major Eye Procedure":{"multiSelect":true},
+
+
+
+
+			
+
             "defaults": {
                 "Number of living children": 1,
                 "Accepted Family Planning methods": [
@@ -146,3 +251,4 @@
         }
     }
 }
+
