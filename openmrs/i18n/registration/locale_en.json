@@ -21,5 +21,6 @@
   "REGISTRATION_INSTITUTE_ADDRESS": "Kirinyaga, District - Kerugoya",
   "FEE_INFORMATION_LOCALE_KEY": "Fee Information",
   "NUTRITIONAL_VALUES_LOCALE_KEY": "Nutritional Values",
-  "REGISTRATION_PRINT_WITH_BARCODE": "Bar<u>c</u>ode Print"
+  "REGISTRATION_PRINT_WITH_BARCODE": "Bar<u>c</u>ode Print",
+  "NOK_ID_NUMBER_FIELD_ERROR": "Next of Kin ID number must be 8 characters"
 }

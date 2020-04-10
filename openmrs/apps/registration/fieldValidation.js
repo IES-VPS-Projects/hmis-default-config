@@ -16,5 +16,11 @@ Bahmni.Registration.customValidator = {
             return value.match(/^\w+$/);
         },
         errorMessage: "REGISTRATION_CASTE_TEXT_ERROR_KEY"
+    },
+    "nextOfKinIdentifier": {
+        method: function (name, value, personAttributeDetails) {
+            return value && value.length === 8;
+        },
+        errorMessage: "NOK_ID_NUMBER_FIELD_ERROR"
     }
 };
