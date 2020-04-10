@@ -28,5 +28,11 @@ Bahmni.Registration.customValidator = {
             return value && value.length >=10 && value.length <= 13 ;
         },
         errorMessage: "REGISTRATION_MOBILE_NO_ERROR"
+    },
+    "nextOfKinPhoneNumber": {
+        method: function (name, value, personAttributeDetails) {
+            return value && value.length >=10 && value.length <= 13 ;
+        },
+        errorMessage: "REGISTRATION_NOK_MOBILE_NO_ERROR"
     }
 };

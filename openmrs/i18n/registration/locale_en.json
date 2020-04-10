@@ -23,5 +23,6 @@
   "NUTRITIONAL_VALUES_LOCALE_KEY": "Nutritional Values",
   "REGISTRATION_PRINT_WITH_BARCODE": "Bar<u>c</u>ode Print",
   "NOK_ID_NUMBER_FIELD_ERROR": "Next of Kin ID number must be 8 characters",
-  "REGISTRATION_MOBILE_NO_ERROR": "Mobile number must be between 10 and 13 digits"
+  "REGISTRATION_MOBILE_NO_ERROR": "Mobile number must be between 10 and 13 digits",
+  "REGISTRATION_NOK_MOBILE_NO_ERROR": "Next odf Kin Phone Number must be between 10 and 13 digits"
 }
