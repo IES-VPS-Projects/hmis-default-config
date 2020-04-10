@@ -22,5 +22,11 @@ Bahmni.Registration.customValidator = {
             return value && value.length === 8;
         },
         errorMessage: "NOK_ID_NUMBER_FIELD_ERROR"
+    },
+    "mobileNo": {
+        method: function (name, value, personAttributeDetails) {
+            return value && value.length >=10 && value.length <= 13 ;
+        },
+        errorMessage: "REGISTRATION_MOBILE_NO_ERROR"
     }
 };
