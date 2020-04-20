@@ -36,8 +36,7 @@ Bahmni.ConceptSet.FormConditions.rules = {
                 disable: ["Immunization, Date of Next Appointment"]
             }
         }
-    }
-
+    },
     "Development milestone CWC":function(formName, formFieldValues) {
         var conditions = {
         show: [],
