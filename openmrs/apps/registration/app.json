@@ -67,12 +67,13 @@
       "payments": {
         "translationKey": "Payments",
         "title": "Payments",
+        "expanded": true,
         "attributes": [
           "modeOfPayment",
           "exemption",
           "exemptionReason"
         ],
-        "order": 5
+        "order": 1
       },
       "nextOfKin": {
         "translationKey": "Next Of Kin",
