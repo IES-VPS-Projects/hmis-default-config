@@ -22,6 +22,17 @@
 		"order": 2,
 		"requiredPrivilege": "app:clinical:diagnosisTab"
 	},
+	"peerreview": {
+		"id": "bahmni.clinical.consultation.peerreview",
+		"extensionPointId": "org.bahmni.clinical.consultation.board",
+		"type": "link",
+		"label": "Peer Review",
+		"translationKey": "PEER_REVIEW_BOARD_LABEL_KEY",
+		"url": "peerreview",
+		"icon": "fa-user-md",
+		"order": 3,
+		"requiredPrivilege": "app:clinical:diagnosisTab"
+	},
 	"disposition": {
 		"id": "bahmni.clinical.consultation.disposition",
 		"extensionPointId": "org.bahmni.clinical.consultation.board",
@@ -156,7 +167,7 @@
 		},
 		"label": "IMCI",
 		"order": 1,
-		"requiredPrivilege": "active-MCH"	
+		"requiredPrivilege": "active-MCH"
 	},
 	"bahmniClinicalPatientsSearchActiveVaccination&ImmunizationPatients":{
 	"id": "bahmni.clinical.patients.search.activeVaccination&ImmunizationPatients",
@@ -351,7 +362,7 @@
 		},
 		"label": "Orthopedic",
 		"order": 1,
-		"requiredPrivilege": "active-Orthopedic"	
+		"requiredPrivilege": "active-Orthopedic"
 	},
 	"activePatientsByLocation": {
 		"id": "bahmni.clinical.patients.search.activePatientsByLocation",
