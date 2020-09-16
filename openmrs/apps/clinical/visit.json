@@ -89,6 +89,19 @@
                     "scope": "latest"
                 }
             },
+            "Chief Complaints":{
+                "type":"observation",
+                "isObservation":true,
+                "config":{
+                    "showGroupDateTime":false,
+                    "conceptNames":[
+                      "Chief Complaint Data",
+                      "Clief COmplaint Notes"
+                    ]
+                },
+                "displayOrder":4,
+                "translationKey":"DASHBOARD_TITLE_CHIEF_COMPLAINTS"
+            },
             "diagnoses":{
                 "type": "diagnosis",
                 "displayOrder": 4,
@@ -114,6 +127,19 @@
                     "scope": "latest",
                     "numberOfVisits": "1"
                 }
+            },
+            "Lab Orders": {
+              "type": "order",
+              "displayOrder": 6,
+              "translationKey": "Orthopedic Procedures",
+              "config": {
+                  "translationKey": "Orthopedic Procedures",
+                  "name": "ordersControl",
+                  "orderType": "Orthopedic Order",
+                  "conceptNames": [
+                    "Summary"
+                  ]
+              }
             },
             "labInvestigations":{
                 "type": "investigationResult",
@@ -169,9 +195,19 @@
               "config": {
                   "translationKey": "Radiology Orders",
                   "name": "ordersControl",
-                  "orderType": "Radiology Order",
+                  "orderType": "Radiology Order"
+              }
+          },
+          "Lab Orders": {
+              "type": "order",
+              "displayOrder": 0,
+              "translationKey": "Lab Order",
+              "config": {
+                  "translationKey": "Lab Order",
+                  "name": "ordersControl",
+                  "orderType": "Lab Order",
                   "conceptNames": [
-                      "Summary"
+                    "Summary"
                   ]
               }
           }
