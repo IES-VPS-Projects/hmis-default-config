@@ -19,6 +19,7 @@
         "onDischargeForwardTo": "#",
         "defaultVisitType": "IPD",
         "expectedDateOfDischarge": "",
+        "maxPatientsPerBed" : 2,
         "conceptSetUI": {
             "Expected Date of Discharge": {
                 "disableAddNotes": true,

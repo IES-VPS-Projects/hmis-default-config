@@ -494,6 +494,20 @@
                 },
                 "displayOrder":5
             },
+            "Chronic Treatment Chart":{
+                "title":" Treatment Chart",
+                "type":"chronicTreatmentChart",
+                "dashboardConfig":{
+                    "drugs":[
+
+                    ]
+                },
+                "expandedViewConfig":{
+                    "drugs":[
+
+                    ]
+                }
+            },
             "diabetes":{  
                 "title":"Diabetes",
                 "templateName":"Diabetes, Progress",
