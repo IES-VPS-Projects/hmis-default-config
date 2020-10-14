@@ -11,10 +11,10 @@ FROM
                    visit.date_started AS visit_date,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
@@ -33,10 +33,10 @@ FROM
                    visit.date_started AS visit_date,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 3 ) AS client_visits
 
@@ -55,10 +55,10 @@ FROM
                    visit.date_started AS visit_date,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 2 ) AS client_visits
 
@@ -77,10 +77,10 @@ FROM
                    visit.date_started AS visit_date,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 2 ) AS client_visits
 UNION ALL
@@ -98,10 +98,10 @@ FROM
                    visit.date_started AS visit_date,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 1) AS client_visits
 UNION ALL
@@ -135,7 +135,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)  AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)  AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =1 ) AS services
 
@@ -156,7 +156,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =2 ) AS services
    UNION ALL
@@ -176,7 +176,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =3 ) AS services
    UNION ALL
@@ -196,7 +196,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =4 ) AS services
    UNION ALL
@@ -216,7 +216,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =5 ) AS services
    UNION ALL
@@ -236,7 +236,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =6 ) AS services
    UNION ALL
@@ -256,7 +256,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =7) AS services
 
@@ -277,7 +277,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id <=6 ) AS services
 
@@ -306,7 +306,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =8 ) AS services
 
@@ -326,7 +326,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =8 ) AS services
 
@@ -346,7 +346,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =9 ) AS services
 
@@ -366,7 +366,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id =10 ) AS services
 
@@ -386,7 +386,7 @@ FROM
    FROM form_concepts_map
      INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
-     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
 WHERE form_concepts_map.map_id >7 AND form_concepts_map.map_id <12  ) AS services
 
@@ -492,10 +492,10 @@ FROM
                    person.gender AS patient_gender,
                    observed_age_group.sort_order AS sort_order
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
-                                                                  DATE(visit.date_stopped) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                  DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 2 OR observed_age_group.id = 3 ) AS client_visits
 
