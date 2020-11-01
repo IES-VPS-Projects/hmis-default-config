@@ -1,4 +1,12 @@
 {
+  "moh505": {
+    "name": "MOH 505",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/505.sql"
+    }
+  },
   "moh705A": {
     "name": "MOH 705 A(Under Five) ",
     "type": "MRSGeneric",

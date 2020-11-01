@@ -153,6 +153,10 @@
             },
 			"Physiotherapy Interventions" :{"multiSelect": true
 			},
+            "Death Note, Primary Cause of Death" :{
+              "multiSelect" : true,
+              "autocomplete" : true
+            },
 			"Nutrition, Nutritional Status":{"dropdown": true},
 			"CWC vitamin,Age":{"dropdown": true},
 			"CWC, Dose":{"dropdown": true},
