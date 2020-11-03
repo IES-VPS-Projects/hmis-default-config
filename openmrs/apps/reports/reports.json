@@ -88,7 +88,7 @@
     }
   },
   "moh717-Mortury": {
-    "name": "MOH 717 Mortury",
+    "name": "MOH 717 Mortuary",
     "type": "MRSGeneric",
     "config": {
       "forDataAnalysis": true,
@@ -101,6 +101,54 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/medical_records.sql"
+    }
+  },
+  "moh717Report": {
+    "name": "MOOH 717",
+    "type": "concatenated",
+    "config": {
+      "reports": [
+        {
+          "name": "MOH 717 - Outpatient Services",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/outpatients.sql"
+          }
+        },
+        {
+          "name": "MOH 717 - Inpatient Services",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/inpatients.sql"
+          }
+        },
+        {
+          "name": "MOH 717 Maternity",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/maternity.sql"
+          }
+        },
+        {
+          "name": "MOH 717 Operations",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/operations.sql"
+          }
+        },
+        {
+          "name": "MOH 717 Mortuary",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/mortury.sql"
+          }
+        }
+      ]
     }
   },
   "urineanalysis": {
