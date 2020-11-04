@@ -47,6 +47,14 @@
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/HistologyandCytology.sql"
     }
   },
+  "moh7II": {
+    "name": "MOH 711",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711.sql"
+    }
+  },
   "moh7IIB": {
     "name": "MOH 711B",
     "type": "MRSGeneric",
