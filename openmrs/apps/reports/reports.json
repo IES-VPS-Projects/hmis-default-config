@@ -47,12 +47,52 @@
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/HistologyandCytology.sql"
     }
   },
-  "moh7II": {
-    "name": "MOH 711",
+  "moh711Report": {
+    "name": "MOOH 711",
+    "type": "concatenated",
+    "config": {
+      "reports": [
+        {
+          "name": "MOH 711 ANC/PMTCT",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711.sql"
+          }
+        },
+        {
+          "name": "MOH 711 Maternity",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternity.sql"
+          }
+        },
+        {
+          "name": "MOH 711 Maternal Complications",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternal_complications.sql"
+          }
+        }
+      ]
+    }
+  },
+  "moh7IIANC": {
+    "name": "MOH 711 ANC / PMTCT",
     "type": "MRSGeneric",
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711.sql"
+    }
+  },
+  "moh7IIMaternity": {
+    "name": "MOH 711 - Maternity and Newborn",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternity.sql"
     }
   },
   "moh7IIB": {
