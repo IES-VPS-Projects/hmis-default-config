@@ -48,7 +48,7 @@
     }
   },
   "moh711Report": {
-    "name": "MOOH 711",
+    "name": "MOH 711",
     "type": "concatenated",
     "config": {
       "reports": [

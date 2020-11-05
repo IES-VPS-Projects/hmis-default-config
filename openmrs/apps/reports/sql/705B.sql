@@ -1,36 +1,36 @@
 SELECT disease.map_id AS 'No.' ,disease.disease_name AS 'DISEASES (New Cases Only) ',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 1 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ) , 1, 0),0))) AS '1',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 2 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '2',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 3 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '3',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 4 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '4',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 5 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '5',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 6 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '6',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 7 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '7',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 8 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '8',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 9 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '9',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 10 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '10',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 11 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '11',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 12 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '12',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 13 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '13',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 14 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '14',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 15 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '15',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 16 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '16',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 17 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '17',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 18 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '18',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 19 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '19',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 20 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '20',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 21 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '21',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 22 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '22',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 23 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '23',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 24 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '24',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 25 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '25',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 26 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '26',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 27 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '27',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 28 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '28',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 29 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '29',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 30 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '30',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 31 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '31',
-    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  , 1, 0),0))) AS 'TOTALS'
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 1 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ) , 1, 0),0))) AS '1',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 2 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '2',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 3 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '3',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 4 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '4',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 5 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '5',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 6 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '6',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 7 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '7',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 8 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '8',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 9 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '9',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 10 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '10',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 11 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '11',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 12 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '12',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 13 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '13',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 14 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '14',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 15 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '15',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 16 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '16',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 17 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '17',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 18 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '18',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 19 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '19',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 20 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '20',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 21 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '21',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 22 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '22',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 23 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '23',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 24 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '24',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 25 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '25',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 26 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '26',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 27 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '27',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 28 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '28',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 29 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '29',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 30 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '30',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 31 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '31',
+    IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  , 1, 0),0))) AS 'TOTALS'
 
 
 
@@ -40,14 +40,14 @@ FROM
                    obs.voided AS voided,
                    obs.obs_datetime AS date_time,
                    patient.date_created AS first_visit_date,
-                   disease_concepts_map.disease_name AS disease_name,
+                   disease_concepts_map_b.disease_name AS disease_name,
                    person.birthdate as birthdate,
                    visit.date_stopped AS date_stopped,
                    visit.date_started AS date_started,
-                   disease_concepts_map.map_id AS map_id
+                   disease_concepts_map_b.map_id AS map_id
 
-FROM disease_concepts_map
- LEFT OUTER JOIN obs ON  obs.value_coded = disease_concepts_map.concept_id
+FROM disease_concepts_map_b
+ LEFT OUTER JOIN obs ON  obs.value_coded = disease_concepts_map_b.concept_id
  LEFT OUTER JOIN encounter ON encounter.encounter_id = obs.encounter_id
  LEFT OUTER JOIN visit ON visit.visit_id = encounter.visit_id
  LEFT OUTER JOIN patient ON patient.patient_id=obs.person_id
@@ -56,7 +56,7 @@ FROM disease_concepts_map
 GROUP BY disease.map_id
 UNION ALL
 
-SELECT '62' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
+SELECT '' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
     ' 'AS '1',
     ' ' AS '2',
     ' ' AS '3',
@@ -92,44 +92,173 @@ SELECT '62' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
 
     UNION ALL
 
-SELECT '63' AS 'NO.',' ALL OTHER DISEASES'  AS 'DISEASES (New Cases Only) ',
-    '0'AS '1',
-    '0' AS '2',
-    '0' AS '3',
-    '0' AS '4',
-    '0' AS '5',
-    '0' AS '6',
-    '0' AS '7',
-    '0' AS '8',
-    '0' AS '9',
-    '0' AS '10',
-    '0' AS '11',
-    '0' AS '12',
-    '0' AS '13',
-    '0' AS '14',
-    '0' AS '15',
-    '0' AS '16',
-    '0' AS '17',
-    '0' AS '18',
-    '0' AS '19',
-    '0' AS '20',
-    '0' AS '21',
-    '0' AS '22',
-    '0' AS '23',
-    '0' AS '24',
-    '0' AS '25',
-    '0' AS '26',
-    '0' AS '27',
-    '0' AS '28',
-    '0' AS '29',
-    '0' AS '30',
-    '0' AS '31',
-    '0' AS 'TOTALS'
+SELECT '67' AS 'NO.',' ALL OTHER DISEASES'  AS 'DISEASES (New Cases Only) ',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 1 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ) , 1, 0),0))) AS '1',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 2 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '2',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 3 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '3',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 4 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '4',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 5 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '5',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 6 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '6',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 7 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '7',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 8 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '8',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 9 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '9',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 10 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '10',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 11 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '11',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 12 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY)) ), 1, 0),0))) AS '12',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 13 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '13',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 14 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '14',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 15 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '15',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 16 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '16',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 17 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '17',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 18 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '18',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 19 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '19',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 20 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '20',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 21 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '21',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 22 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '22',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 23 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '23',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 24 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '24',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 25 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '25',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 26 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '26',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 27 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '27',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 28 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '28',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 29 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '29',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 30 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '30',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(disease.date_time)) = 31 AND (  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  ), 1, 0),0))) AS '31',
+  IF(disease.value_coded IS NULL, 0, SUM(IF(DATE(disease.date_time) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(  DATE(disease.date_time) BETWEEN (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 5 YEAR), INTERVAL 1 DAY)) AND (DATE_ADD(DATE_ADD(disease.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  , 1, 0),0))) AS 'TOTALS'
+
+FROM
+  (SELECT DISTINCT obs.obs_id AS obs_id,
+                   obs.value_coded AS value_coded,
+                   obs.voided AS voided,
+                   obs.obs_datetime AS date_time,
+                   patient.date_created AS first_visit_date,
+                   person.birthdate as birthdate,
+                   visit.date_started AS date_started,
+                   visit.date_stopped AS date_stopped
+
+   FROM encounter
+     INNER JOIN visit ON visit.visit_id = encounter.visit_id
+     INNER JOIN obs ON obs.encounter_id= encounter.encounter_id
+                       AND obs.value_coded NOT IN (select concept_id from disease_concepts_map_b)
+     INNER JOIN concept c ON c.concept_id=obs.value_coded
+     INNER JOIN concept_class cc ON cc.concept_class_id=c.class_id
+                                    AND cc.name="Diagnosis"
+     INNER JOIN patient ON patient.patient_id=obs.person_id
+     INNER JOIN person ON person.person_id=patient.patient_id
+  ) AS disease
 
 
-    UNION ALL
+UNION ALL
 
-SELECT '64' AS 'NO.',' NO. OF FIRST ATTENDANCES'  AS 'DISEASES (New Cases Only) ',
+SELECT '68' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
+       ' 'AS '1',
+       ' ' AS '2',
+       ' ' AS '3',
+       ' ' AS '4',
+       ' ' AS '5',
+       ' ' AS '6',
+       ' ' AS '7',
+       ' ' AS '8',
+       ' ' AS '9',
+       ' ' AS '10',
+       ' ' AS '11',
+       ' ' AS '12',
+       ' ' AS '13',
+       ' ' AS '14',
+       ' ' AS '15',
+       ' ' AS '16',
+       ' ' AS '17',
+       ' ' AS '18',
+       ' ' AS '19',
+       ' ' AS '20',
+       ' ' AS '21',
+       ' ' AS '22',
+       ' ' AS '23',
+       ' ' AS '24',
+       ' ' AS '25',
+       ' ' AS '26',
+       ' ' AS '27',
+       ' ' AS '28',
+       ' ' AS '29',
+       ' ' AS '30',
+       ' ' AS '31',
+       ' ' AS 'TOTALS'
+
+UNION ALL
+
+SELECT '69' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
+       ' 'AS '1',
+       ' ' AS '2',
+       ' ' AS '3',
+       ' ' AS '4',
+       ' ' AS '5',
+       ' ' AS '6',
+       ' ' AS '7',
+       ' ' AS '8',
+       ' ' AS '9',
+       ' ' AS '10',
+       ' ' AS '11',
+       ' ' AS '12',
+       ' ' AS '13',
+       ' ' AS '14',
+       ' ' AS '15',
+       ' ' AS '16',
+       ' ' AS '17',
+       ' ' AS '18',
+       ' ' AS '19',
+       ' ' AS '20',
+       ' ' AS '21',
+       ' ' AS '22',
+       ' ' AS '23',
+       ' ' AS '24',
+       ' ' AS '25',
+       ' ' AS '26',
+       ' ' AS '27',
+       ' ' AS '28',
+       ' ' AS '29',
+       ' ' AS '30',
+       ' ' AS '31',
+       ' ' AS 'TOTALS'
+
+UNION ALL
+
+
+SELECT '70' AS 'NO.', ' '  AS 'DISEASES (New Cases Only) ',
+       ' 'AS '1',
+       ' ' AS '2',
+       ' ' AS '3',
+       ' ' AS '4',
+       ' ' AS '5',
+       ' ' AS '6',
+       ' ' AS '7',
+       ' ' AS '8',
+       ' ' AS '9',
+       ' ' AS '10',
+       ' ' AS '11',
+       ' ' AS '12',
+       ' ' AS '13',
+       ' ' AS '14',
+       ' ' AS '15',
+       ' ' AS '16',
+       ' ' AS '17',
+       ' ' AS '18',
+       ' ' AS '19',
+       ' ' AS '20',
+       ' ' AS '21',
+       ' ' AS '22',
+       ' ' AS '23',
+       ' ' AS '24',
+       ' ' AS '25',
+       ' ' AS '26',
+       ' ' AS '27',
+       ' ' AS '28',
+       ' ' AS '29',
+       ' ' AS '30',
+       ' ' AS '31',
+       ' ' AS 'TOTALS'
+
+UNION ALL
+SELECT '71' AS 'NO.',' NO. OF FIRST ATTENDANCES'  AS 'DISEASES (New Cases Only) ',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 1 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0),0))) AS '1',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 2 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0),0))) AS '2',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 3 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0),0))) AS '3',
@@ -178,7 +307,7 @@ FROM
 
         UNION ALL
 
-SELECT '65' AS 'NO.',' RE-ATTENDANCES'  AS 'DISEASES (New Cases Only) ',
+SELECT '72' AS 'NO.',' RE-ATTENDANCES'  AS 'DISEASES (New Cases Only) ',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 1 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '1',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 2 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '2',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 3 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '3',
@@ -338,7 +467,7 @@ WHERE person_attribute.voided =0 AND person_attribute_type.retired=0 AND person_
 
     UNION ALL
 
-    SELECT '67' AS 'NO.',' Referrals to other health facilities'  AS 'DISEASES (New Cases Only) ',
+    SELECT '73' AS 'NO.',' Referrals to other health facilities'  AS 'DISEASES (New Cases Only) ',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 1 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '1',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 2 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '2',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 3 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '3',
@@ -391,7 +520,7 @@ WHERE form_concepts_map.map_id =23 AND obs.value_coded=24) AS client_visits
 
     UNION ALL
 
-    SELECT '68' AS 'NO.',' Referrals from Community unit'  AS 'DISEASES (New Cases Only) ',
+    SELECT '74' AS 'NO.',' Referrals from Community unit'  AS 'DISEASES (New Cases Only) ',
         IF(client_visits.attribute_id IS NULL, 0, 
             SUM(IF( (client_visits.date_created IS NOT NULL AND DATE(client_visits.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND DAY(DATE(client_visits.date_created)) = 1 ) OR (client_visits.date_changed IS NOT NULL AND DATE(client_visits.date_changed) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND DAY(DATE(client_visits.date_changed)) = 1 ),
             IF( (  DATE(client_visits.date_created) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  , 1, 0),0))) AS '1',
@@ -503,7 +632,7 @@ WHERE person_attribute.voided =0 AND person_attribute_type.retired=0 AND person_
 
     UNION ALL
 
-    SELECT '69' AS 'NO.',' Referals to Community Unit'  AS 'DISEASES (New Cases Only) ',
+    SELECT '75' AS 'NO.',' Referals to Community Unit'  AS 'DISEASES (New Cases Only) ',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 1 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '1',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 2 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '2',
     IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DAY(DATE(client_visits.visit_date)) = 3 AND (  DATE(client_visits.visit_date) BETWEEN (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 5 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(client_visits.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))  )  AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0),0))) AS '3',
