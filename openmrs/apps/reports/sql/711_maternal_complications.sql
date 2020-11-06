@@ -180,6 +180,13 @@ INNER JOIN person on p.patient_id=person.person_id
 
 UNION ALL
 
+SELECT '' AS 'Service',
+      '' AS 'ALIVE',
+      '' AS 'DEAD',
+     ' ' as 'TOTAL'
+
+UNION ALL
+
 SELECT 'Neonatal Care and Outcome ' AS 'Service',
       '' AS 'ALIVE',
       '' AS 'DEAD',

@@ -75,6 +75,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternal_complications.sql"
           }
+        },
+        {
+          "name": "MOH 711 - Sexual and Gender Based Violence",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_sgbv.sql"
+          }
         }
       ]
     }
@@ -93,6 +101,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternity.sql"
+    }
+  },
+  "moh7IISgvb": {
+    "name": "MOH 711 - Sexual and Gender Based Violence",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_sgbv.sql"
     }
   },
   "moh7IIB": {
