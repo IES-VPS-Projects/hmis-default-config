@@ -83,6 +83,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_sgbv.sql"
           }
+        },
+        {
+          "name": "MOH 711 - Family Planning",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_family_planning.sql"
+          }
         }
       ]
     }
@@ -109,6 +117,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_sgbv.sql"
+    }
+  },
+  "moh7IIfp": {
+    "name": "MOH 711 - Family Planning",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_family_planning.sql"
     }
   },
   "moh7IIB": {
