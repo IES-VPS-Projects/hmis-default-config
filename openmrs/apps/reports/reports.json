@@ -115,6 +115,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_cervical_cancer.sql"
           }
+        },
+        {
+          "name": "MOH 711 - PNC",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pnc.sql"
+          }
         }
       ]
     }
@@ -173,6 +181,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_cervical_cancer.sql"
+    }
+  },
+  "moh7IIPNC": {
+    "name": "MOH 711 - PNC",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pnc.sql"
     }
   },
   "moh7IIB": {
