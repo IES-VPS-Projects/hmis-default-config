@@ -123,6 +123,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pnc.sql"
           }
+        },
+        {
+          "name": "MOH 711 - REHABILITATION SERVICES / MEDICAL SOCIAL WORK",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_rehabilitation.sql"
+          }
         }
       ]
     }
@@ -189,6 +197,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pnc.sql"
+    }
+  },
+  "moh7I1Rehabilitation": {
+    "name": "MOH 711 - REHABILITATION SERVICES",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_rehabilitation.sql"
     }
   },
   "moh7IIB": {

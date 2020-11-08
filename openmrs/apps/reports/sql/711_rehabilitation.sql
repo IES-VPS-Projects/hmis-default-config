@@ -1,10 +1,10 @@
-SELECT 'H. POST NATAL CARE (PNC) ' AS 'Service',
+SELECT 'I. REHABILITATION SERVICES' AS 'Service',
      ' ' as 'TOTAL'
 
 UNION ALL
 
-SELECT '1. No. of PNC Clients     |     New  ' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '1. Number assessed ' AS 'Service',
+       IF(rehab_val.encounter_id IS NULL, 0, SUM(IF(rehab_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -23,17 +23,16 @@ FROM
                          AND o.voided = 0
      INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="PNC"
+                                   AND cv.concept_full_name="Rehabiilitation"
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-            AND DATE(o.obs_datetime) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 10 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 19 YEAR), INTERVAL 0 DAY))
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS rehab_val
 
   UNION ALL
 
-SELECT '2. No. of PNC Clients     |     Revisit  ' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '2. Number treated ' AS 'Service',
+       IF(rehab_val.encounter_id IS NULL, 0, SUM(IF(rehab_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -52,47 +51,16 @@ FROM
                          AND o.voided = 0
      INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="PNC"
+                                   AND cv.concept_full_name="Rehabiilitation"
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND DATE(o.obs_datetime) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 10 YEAR), INTERVAL 0 DAY)) AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 19 YEAR), INTERVAL 0 DAY))
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS rehab_val
 
-UNION ALL
+  UNION ALL
 
-SELECT '3. No. of women counselled on Post Partum FP' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
-
-FROM
-  (SELECT DISTINCT
-     encounter.encounter_id AS encounter_id,
-     o.obs_id         AS obs_id,
-     o.voided         AS voided,
-     o.obs_datetime   AS date_time,
-     v.date_started   AS visit_date,
-     p.patient_id     AS patient_id,
-     person.birthdate AS birthdate,
-     p.date_created   AS first_visit_date
-   FROM encounter
-     INNER JOIN visit v ON encounter.visit_id = v.visit_id
-     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
-                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
-                         AND o.voided = 0
-                         AND o.concept_id = (select concept_id from concept_view where concept_full_name="Counselled on Post Partum FP")
-     INNER JOIN concept c ON o.value_coded = c.concept_id
-     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="True"
-     INNER JOIN patient p ON encounter.patient_id = p.patient_id
-     INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
-   GROUP BY encounter_id
-  ) AS pnc_val
-
-UNION ALL
-
-SELECT '4. No. of who received clients Post Partum FP' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '3. Number Rehabilitated ' AS 'Service',
+       IF(rehab_val.encounter_id IS NULL, 0, SUM(IF(rehab_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -111,16 +79,16 @@ FROM
                          AND o.voided = 0
      INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="Post Partum FP"
+                                   AND cv.concept_full_name="Rehabiilitation"
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS rehab_val
 
-UNION ALL
+  UNION ALL
 
-SELECT '5. No. of mothers received Post Partum Care   |   Within 48 Hours' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '4. Number Referred fo further Interventions ' AS 'Service',
+       IF(rehab_val.encounter_id IS NULL, 0, SUM(IF(rehab_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -139,17 +107,16 @@ FROM
                          AND o.voided = 0
      INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name=""
+                                   AND cv.concept_full_name="Rehabiilitation"
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS rehab_val
 
-UNION ALL
+  UNION ALL
 
-SELECT '5. No. of mothers received Post Partum Care   |   Between 3 days - 6 Weeks' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '5. Number Integrated to communities ' AS 'Service',
+       IF(rehab_val.encounter_id IS NULL, 0, SUM(IF(rehab_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -168,51 +135,31 @@ FROM
                          AND o.voided = 0
      INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name=""
+                                   AND cv.concept_full_name="Rehabiilitation"
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
    GROUP BY encounter_id
-  ) AS pnc_val
-
-UNION ALL
-
-SELECT '5. No. of mothers received Post Partum Care   |   After 6 Weeks' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
-
-FROM
-  (SELECT DISTINCT
-     encounter.encounter_id AS encounter_id,
-     o.obs_id         AS obs_id,
-     o.voided         AS voided,
-     o.obs_datetime   AS date_time,
-     v.date_started   AS visit_date,
-     p.patient_id     AS patient_id,
-     person.birthdate AS birthdate,
-     p.date_created   AS first_visit_date
-   FROM encounter
-     INNER JOIN visit v ON encounter.visit_id = v.visit_id
-     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
-                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
-                         AND o.voided = 0
-     INNER JOIN concept c ON o.concept_id = c.concept_id
-     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name=""
-     INNER JOIN patient p ON encounter.patient_id = p.patient_id
-     INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
-   GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS rehab_val
 
 UNION ALL
 
 SELECT '' AS 'Service',
-       ' ' as 'TOTAL'
+     ' ' as 'TOTAL'
 
 UNION ALL
 
-SELECT '6. No. of Babies received Post Partum Care   |   Within 48 Hours' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '' AS 'Service',
+     ' ' as 'TOTAL'
+
+UNION ALL
+
+SELECT 'J.  MEDICAL SOCIAL WORK' AS 'Service',
+     ' ' as 'TOTAL'
+
+UNION ALL
+
+SELECT '1. Number Integrated to communities ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -234,14 +181,13 @@ FROM
                                    AND cv.concept_full_name=""
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS msocial_val
 
-UNION ALL
+  UNION ALL
 
-SELECT '6. No. of Babies received Post Partum Care   |   Between 3 days - 6 Weeks' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '2. Alcohol and Drug abuse' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -263,14 +209,13 @@ FROM
                                    AND cv.concept_full_name=""
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS msocial_val
 
-UNION ALL
+  UNION ALL
 
-SELECT '6. No. of Babies received Post Partum Care   |   After 6 Weeks' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '3. Mental Illness ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -292,19 +237,13 @@ FROM
                                    AND cv.concept_full_name=""
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
-                          AND person.gender = 'F'
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS msocial_val
 
-UNION ALL
+  UNION ALL
 
-SELECT ' ' AS 'Service',
-       ' ' as 'TOTAL'
-
-UNION ALL
-
-SELECT '7. No. of cases of fistula' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '4.  Adolescent issues ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -321,19 +260,18 @@ FROM
      INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
                          AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
                          AND o.voided = 0
-     INNER JOIN concept c ON o.value_coded = c.concept_id
+     INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="Anal fissure and fistula"
+                                   AND cv.concept_full_name=""
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS msocial_val
 
+  UNION ALL
 
-UNION ALL
-
-SELECT '8. No referred from the community to PNC' AS 'Service',
-       IF(pnc_val.encounter_id IS NULL, 0, SUM(IF(pnc_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+SELECT '5. Physyco-Social Assessments (psycho, social and economic) ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
 
 FROM
   (SELECT DISTINCT
@@ -350,10 +288,122 @@ FROM
      INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
                          AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
                          AND o.voided = 0
-     INNER JOIN concept c ON o.value_coded = c.concept_id
+     INNER JOIN concept c ON o.concept_id = c.concept_id
      INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
-                                   AND cv.concept_full_name="Reffered from community"
+                                   AND cv.concept_full_name=""
      INNER JOIN patient p ON encounter.patient_id = p.patient_id
      INNER JOIN person ON p.patient_id = person.person_id
    GROUP BY encounter_id
-  ) AS pnc_val
+  ) AS msocial_val
+
+  UNION ALL
+
+SELECT '6. Social Investigations (Home Visists / Follow ups ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+
+FROM
+  (SELECT DISTINCT
+     encounter.encounter_id AS encounter_id,
+     o.obs_id         AS obs_id,
+     o.voided         AS voided,
+     o.obs_datetime   AS date_time,
+     v.date_started   AS visit_date,
+     p.patient_id     AS patient_id,
+     person.birthdate AS birthdate,
+     p.date_created   AS first_visit_date
+   FROM encounter
+     INNER JOIN visit v ON encounter.visit_id = v.visit_id
+     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
+                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+                         AND o.voided = 0
+     INNER JOIN concept c ON o.concept_id = c.concept_id
+     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
+                                   AND cv.concept_full_name=""
+     INNER JOIN patient p ON encounter.patient_id = p.patient_id
+     INNER JOIN person ON p.patient_id = person.person_id
+   GROUP BY encounter_id
+  ) AS msocial_val
+
+  UNION ALL
+
+SELECT '7. Social Rehabilitation ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+
+FROM
+  (SELECT DISTINCT
+     encounter.encounter_id AS encounter_id,
+     o.obs_id         AS obs_id,
+     o.voided         AS voided,
+     o.obs_datetime   AS date_time,
+     v.date_started   AS visit_date,
+     p.patient_id     AS patient_id,
+     person.birthdate AS birthdate,
+     p.date_created   AS first_visit_date
+   FROM encounter
+     INNER JOIN visit v ON encounter.visit_id = v.visit_id
+     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
+                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+                         AND o.voided = 0
+     INNER JOIN concept c ON o.concept_id = c.concept_id
+     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
+                                   AND cv.concept_full_name=""
+     INNER JOIN patient p ON encounter.patient_id = p.patient_id
+     INNER JOIN person ON p.patient_id = person.person_id
+   GROUP BY encounter_id
+  ) AS msocial_val
+
+  UNION ALL
+
+SELECT '8. Outreach services / Health Tasks ' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+
+FROM
+  (SELECT DISTINCT
+     encounter.encounter_id AS encounter_id,
+     o.obs_id         AS obs_id,
+     o.voided         AS voided,
+     o.obs_datetime   AS date_time,
+     v.date_started   AS visit_date,
+     p.patient_id     AS patient_id,
+     person.birthdate AS birthdate,
+     p.date_created   AS first_visit_date
+   FROM encounter
+     INNER JOIN visit v ON encounter.visit_id = v.visit_id
+     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
+                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+                         AND o.voided = 0
+     INNER JOIN concept c ON o.concept_id = c.concept_id
+     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
+                                   AND cv.concept_full_name=""
+     INNER JOIN patient p ON encounter.patient_id = p.patient_id
+     INNER JOIN person ON p.patient_id = person.person_id
+   GROUP BY encounter_id
+  ) AS msocial_val
+
+  UNION ALL
+
+SELECT '9. Referrals' AS 'Service',
+       IF(msocial_val.encounter_id IS NULL, 0, SUM(IF(msocial_val.encounter_id IS NOT NULL  , 1, 0))) AS 'TOTAL'
+
+FROM
+  (SELECT DISTINCT
+     encounter.encounter_id AS encounter_id,
+     o.obs_id         AS obs_id,
+     o.voided         AS voided,
+     o.obs_datetime   AS date_time,
+     v.date_started   AS visit_date,
+     p.patient_id     AS patient_id,
+     person.birthdate AS birthdate,
+     p.date_created   AS first_visit_date
+   FROM encounter
+     INNER JOIN visit v ON encounter.visit_id = v.visit_id
+     INNER JOIN obs o ON encounter.encounter_id = o.encounter_id
+                         AND DATE(o.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+                         AND o.voided = 0
+     INNER JOIN concept c ON o.concept_id = c.concept_id
+     INNER JOIN concept_view cv ON c.concept_id = cv.concept_id
+                                   AND cv.concept_full_name=""
+     INNER JOIN patient p ON encounter.patient_id = p.patient_id
+     INNER JOIN person ON p.patient_id = person.person_id
+   GROUP BY encounter_id
+  ) AS msocial_val
