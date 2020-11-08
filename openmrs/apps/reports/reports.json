@@ -91,6 +91,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_family_planning.sql"
           }
+        },
+        {
+          "name": "MOH 711 - Post Abortal (PAC) Services",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pac.sql"
+          }
         }
       ]
     }
@@ -125,6 +133,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_family_planning.sql"
+    }
+  },
+  "moh7IIPac": {
+    "name": "MOH 711 - Post Abortal (PAC) Services",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pac.sql"
     }
   },
   "moh7IIB": {
