@@ -1,8 +1,10 @@
 SELECT 'B.3     OPERATIONS' AS 'Service',
-     ' ' as 'Number'
+     ' ' as 'Number Booked',
+      ' ' as 'Number Operated'
 UNION ALL
 SELECT 'B.3.1   Minor Surgeries (excluding circumsisions)' AS 'Service',
-    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number' 
+    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number Booked',
+    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number Operated'
 FROM
   (SELECT DISTINCT 
                    visit_attribute.visit_attribute_id as visit_attribute_id,
@@ -19,7 +21,8 @@ FROM
    WHERE visit_attribute.voided = 0 ) AS client_visits
 UNION ALL
 SELECT 'B.3.2   Circumsission' AS 'Service',
-    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number' 
+    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number Booked',
+      ' ' as 'Number Operated'
 FROM
   (SELECT DISTINCT 
                    visit_attribute.visit_attribute_id as visit_attribute_id,
@@ -36,7 +39,8 @@ FROM
    WHERE visit_attribute.voided = 0 ) AS client_visits
 UNION ALL
 SELECT 'B.3.3   Major Surgeries' AS 'Service',
-    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number' 
+    IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'M' , 0, 0))) as 'Number Booked',
+      ' ' as 'Number Operated'
 FROM
   (SELECT DISTINCT 
                    visit_attribute.visit_attribute_id as visit_attribute_id,

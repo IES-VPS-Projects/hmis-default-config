@@ -520,7 +520,7 @@ FROM
    WHERE observed_age_group.id = 1) AS client_visits
 UNION ALL
 
-SELECT 'A.3.16    Total Special Clinics' AS 'Services',
+SELECT 'A.3.8    Total Special Clinics' AS 'Services',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0))) as 'NEW',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0))) AS 'RE-ATT',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
@@ -717,7 +717,7 @@ FROM
 WHERE form_concepts_map.map_id =12 ) AS services
 
 UNION ALL
-SELECT 'A.4.5.4    TOTAL DENTAL SERVICES' AS 'Services',
+SELECT 'A.4.5    TOTAL DENTAL SERVICES' AS 'Services',
        IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.first_visit_date) = DATE(services.visit_date) AND DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(services.voided = 0, 1, 0),0))) AS 'NEW',
        IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.first_visit_date) < DATE(services.visit_date) AND DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(services.voided = 0, 1, 0),0))) AS 'RE-ATT1',
        IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND services.voided = 0 , 1, 0))) as 'TOTAL'
