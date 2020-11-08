@@ -107,6 +107,14 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_chanis.sql"
           }
+        },
+        {
+          "name": "MOH 711 - CERVICAL CANCER SCREENING",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_cervical_cancer.sql"
+          }
         }
       ]
     }
@@ -157,6 +165,14 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_chanis.sql"
+    }
+  },
+  "moh7IICervicalCancer": {
+    "name": "MOH 711 - CERVICAL CANCER SCREENING",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_cervical_cancer.sql"
     }
   },
   "moh7IIB": {
