@@ -131,6 +131,30 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_rehabilitation.sql"
           }
+        },
+        {
+          "name": "MOH 711 - PHYSIOTHERAPY SERVICE",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_physiotherapy.sql"
+          }
+        },
+        {
+          "name": "MOH 711 - OTHER",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_other.sql"
+          }
+        },
+        {
+          "name": "MOH 711 - TB SCREENING",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_tb_screening.sql"
+          }
         }
       ]
     }
