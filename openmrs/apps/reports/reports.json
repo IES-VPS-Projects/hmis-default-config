@@ -175,78 +175,6 @@
       ]
     }
   },
-  "moh7IIANC": {
-    "name": "MOH 711 ANC / PMTCT",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711.sql"
-    }
-  },
-  "moh7IIMaternity": {
-    "name": "MOH 711 - Maternity and Newborn",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_maternity.sql"
-    }
-  },
-  "moh7IISgvb": {
-    "name": "MOH 711 - Sexual and Gender Based Violence",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_sgbv.sql"
-    }
-  },
-  "moh7IIfp": {
-    "name": "MOH 711 - Family Planning",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_family_planning.sql"
-    }
-  },
-  "moh7IIPac": {
-    "name": "MOH 711 - Post Abortal (PAC) Services",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pac.sql"
-    }
-  },
-  "moh7IIChanis": {
-    "name": "MOH 711 - CHANIS",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_chanis.sql"
-    }
-  },
-  "moh7IICervicalCancer": {
-    "name": "MOH 711 - CERVICAL CANCER SCREENING",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_cervical_cancer.sql"
-    }
-  },
-  "moh7IIPNC": {
-    "name": "MOH 711 - PNC",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_pnc.sql"
-    }
-  },
-  "moh7I1Rehabilitation": {
-    "name": "MOH 711 - REHABILITATION SERVICES",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/711_rehabilitation.sql"
-    }
-  },
   "moh7IIB": {
     "name": "MOH 711B",
     "type": "MRSGeneric",
@@ -317,54 +245,6 @@
     "config": {
       "forDataAnalysis": true,
       "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/inpatients.sql"
-    }
-  },
-  "moh717Outpatients": {
-    "name": "MOH 717 - Outpatient Services",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/outpatients.sql"
-    }
-  },
-  "moh717-Maternity": {
-    "name": "MOH 717 Maternity",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/maternity.sql"
-    }
-  },
-  "moh717-Operations": {
-    "name": "MOH 717 Operations",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/operations.sql"
-    }
-  },
-  "moh717-Mortury": {
-    "name": "MOH 717 Mortuary",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/mortury.sql"
-    }
-  },
-  "moh717-MedicalRecords": {
-    "name": "MOH 717 Medical Records",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/medical_records.sql"
-    }
-  },
-  "moh717-Orthopedic": {
-    "name": "MOH 717 Orthopedic Trauma Services ",
-    "type": "MRSGeneric",
-    "config": {
-      "forDataAnalysis": true,
-      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_orthopedic.sql"
     }
   },
   "urineanalysis": {
