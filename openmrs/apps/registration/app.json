@@ -148,9 +148,21 @@
       }
     ],
     "conceptSetUI": {
-      "REGISTRATION FEES": {
+      "Vitals,Experiencing Cough": {
         "required": true,
         "label": "Fee"
+      },
+      "Experiencing Night Sweats": {
+        "required": true
+      },
+      "Experience Chest Pains": {
+        "required": true
+      },
+      "Experience Fever": {
+        "required": true
+      },
+      "Any weight Loss": {
+        "required": true
       },
       "FHS": {
         "buttonSelect": true
