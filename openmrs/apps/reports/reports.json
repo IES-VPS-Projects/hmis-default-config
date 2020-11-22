@@ -1,4 +1,12 @@
 {
+  "dailyPatients":{
+    "name": "Daily Patients with Diagnosis",
+    "type": "MRSGeneric",
+    "config": {
+      "forDataAnalysis": true,
+      "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/daily_patients.sql"
+    }
+  },
   "moh364": {
     "name": "MOH 364 SEXUAL GENDER BASED VIOLENCE (SGBV)",
     "type": "MRSGeneric",
