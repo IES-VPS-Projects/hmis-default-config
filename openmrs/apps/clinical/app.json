@@ -157,6 +157,18 @@
               "multiSelect" : true,
               "autocomplete" : true
             },
+            "Ortho, Applications": {
+              "multiSelect": true
+            },
+            "Ortho, Reduction of Dislocation": {
+              "multiSelect": true
+            },
+            "Ortho, Applications inpatient": {
+              "multiSelect": true
+            },
+            "Ortho, Inpatient Removals": {
+              "multiSelect": true
+            },
 			"Nutrition, Nutritional Status":{"dropdown": true},
 			"CWC vitamin,Age":{"dropdown": true},
 			"CWC, Dose":{"dropdown": true},
