@@ -105,6 +105,42 @@
                     "numberOfVisits":4
                 }
             },
+            "outpatientProcedures":{
+              "orderType":"Outpatient Procedures",
+              "type":"ordersControl",
+              "translationKey":"DASHBOARD_TITLE_OUTPATIENT_PROCEDURES",
+              "displayOrder":17,
+              "dashboardConfig":{
+                "numberOfVisits":4
+              }
+            },
+            "eyeProcedures":{
+              "orderType":"Eye Procedures Template",
+              "type":"ordersControl",
+              "translationKey":"DASHBOARD_TITLE_EYE_PROCEDURES",
+              "displayOrder":17,
+              "dashboardConfig":{
+                "numberOfVisits":4
+              }
+            },
+            "orthopedicProcedures":{
+              "orderType":"Orthopedic Services",
+              "type":"ordersControl",
+              "translationKey":"DASHBOARD_TITLE_ORTHO_PROCEDURES",
+              "displayOrder":17,
+              "dashboardConfig":{
+                "numberOfVisits":4
+              }
+            },
+            "dentalProcedures":{
+              "orderType":"Dental Procedures",
+              "type":"ordersControl",
+              "translationKey":"DASHBOARD_TITLE_DENTAL_PROCEDURES",
+              "displayOrder":17,
+              "dashboardConfig":{
+                "numberOfVisits":4
+              }
+            },
             "pacs":{  
                 "orderType":"Radiology Order",
                 "type":"pacsOrders",

@@ -494,5 +494,83 @@
 		"icon": "icon-user-md",
 		"order": 6,
 		"requiredPrivilege": "app:clinical:ordersTab"
-	}
+	},
+    "bahmniClinicalPatientsSearchMOPC":{
+      "id": "bahmni.clinical.patients.search.activeMOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.mopc",
+        "translationKey": "MOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "MOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "MOPC queue"
+    },
+    "bahmniClinicalPatientsSearchDOPC":{
+      "id": "bahmni.clinical.patients.search.activeDOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.dopc",
+        "translationKey": "DOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "DOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "DOPC queue"
+    },
+    "bahmniClinicalPatientsSearchSOPC":{
+      "id": "bahmni.clinical.patients.search.activeSOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.sopc",
+        "translationKey": "SOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "SOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "SOPC queue"
+    },
+    "bahmniClinicalPatientsSearchPOPC":{
+      "id": "bahmni.clinical.patients.search.activePOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.popc",
+        "translationKey": "POPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "POPC Patients",
+      "order": 1,
+      "requiredPrivilege": "POPC queue"
+    },
+    "bahmniClinicalPatientsSearchNOPC":{
+      "id": "bahmni.clinical.patients.search.activeNOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.nopc",
+        "translationKey": "NOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "NOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "NOPC queue"
+    },
+    "bahmniClinicalPatientsSearchOOPC":{
+      "id": "bahmni.clinical.patients.search.activeOOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.oopc",
+        "translationKey": "OOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "OOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "OOPC queue"
+    }
 }
