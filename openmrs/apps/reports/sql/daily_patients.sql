@@ -2,7 +2,8 @@ SELECT
   CONCAT(COALESCE(pn.given_name,''),' ',COALESCE(pn.middle_name,''),' ',COALESCE(pn.family_name,''))  AS 'Name',
   FLOOR(DATEDIFF(v.date_started,p.birthdate)/365) as age,
   p.gender,
-  GROUP_CONCAT(cn.name) as 'Diagnosis'
+  GROUP_CONCAT(cn.name) as 'Diagnosis',
+  GROUP_CONCAT(non_coded.value_text) as 'Non coded Diagnosis'
 
 
 from patient pt
@@ -14,6 +15,8 @@ LEFT JOIN encounter e ON v.visit_id = e.visit_id
       AND DATE(e.encounter_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
 LEFT JOIN obs ON e.encounter_id = obs.encounter_id
       AND obs.concept_id= (select concept_view.concept_id from concept_view where concept_full_name="Coded Diagnosis")
+LEFT JOIN obs non_coded ON e.encounter_id = non_coded.encounter_id
+      AND non_coded.concept_id = (select concept_view.concept_id from concept_view where concept_full_name="Non-coded Diagnosis")
 LEFT JOIN concept_view cv ON cv.concept_id=obs.value_coded
 LEFT JOIN (select if(cv.concept_short_name IS NOT NUll, cv.concept_short_name, cv.concept_full_name) as name,
                   cv.concept_id
