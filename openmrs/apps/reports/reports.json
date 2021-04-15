@@ -296,6 +296,22 @@
           }
         },
         {
+          "name": "MOH 717 SPECIAL SERVICES",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_special_services.sql"
+          }
+        },
+        {
+          "name": "MOH 717 PHARMACY",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_pharmacy.sql"
+          }
+        },
+        {
           "name": "MOH 717 Mortuary",
           "type": "MRSGeneric",
           "config": {
