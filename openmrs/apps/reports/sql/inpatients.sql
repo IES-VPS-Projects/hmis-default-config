@@ -17,12 +17,14 @@ FROM
                    visit.date_started AS visit_date
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
    WHERE visit_attribute.voided = 0 ) AS client_visits
 UNION ALL
 SELECT 'B.1.2 Deaths' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Death', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -43,6 +45,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -51,7 +55,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.3 Absoconders' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Absoconders', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -72,6 +76,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -80,7 +86,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.4 TOTAL DISCHARGES, DEATHS etc' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged Death', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -101,6 +107,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -109,7 +117,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.9 Admissions' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Admissions', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -130,6 +138,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -138,7 +148,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.10 Paroles' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Paroles', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -159,6 +169,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -167,7 +179,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.11a Occupied Bed Days- NHIF Members' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'NHIF', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -188,6 +200,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -196,7 +210,7 @@ FROM
    WHERE observed_age_group.id = 3 ) AS client_visits
 UNION ALL
 SELECT 'B.1.11b Occupied Bed Days- Non-NHIF Members' AS 'Service',
-       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Discharged', 1, 0),0))) AS 'General Adults',
+       IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5,IF(client_visits.value_reference = 'Non NHIF', 1, 0),0))) AS 'General Adults',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) > 5 AND TIMESTAMPDIFF(YEAR,client_visits.birth_date, CURDATE()) <= 21 , 1, 0))) as 'Pediatrics',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Maternity Mothers Only',
        IF(client_visits.visit_attribute_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'Amenity',
@@ -217,6 +231,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -246,6 +262,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -275,6 +293,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -304,6 +324,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -333,6 +355,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -362,6 +386,8 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit_attribute
      INNER JOIN visit ON visit_attribute.visit_id = visit.visit_id
+     INNER JOIN visit_type vt ON vt.visit_type_id = visit.visit_type_id
+            AND vt.name="IPD"
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
