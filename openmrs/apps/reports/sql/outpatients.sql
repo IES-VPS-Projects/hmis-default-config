@@ -620,23 +620,26 @@ WHERE form_concepts_map.map_id =9 ) AS services
 
 UNION ALL
 SELECT 'A.4.4    FP Attendance' AS 'Services',
-       IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.first_visit_date) = DATE(services.visit_date) AND DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(services.voided = 0, 1, 0),0))) AS 'NEW',
-       IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.first_visit_date) < DATE(services.visit_date) AND DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(services.voided = 0, 1, 0),0))) AS 'RE-ATT1',
+       IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND services.voided = 0 AND services.concept_name="Family Planning First Visit Card", 1, 0))) AS 'NEW',
+       IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND services.voided = 0 AND services.concept_name="Family Planning Revisit", 1, 0))) AS 'RE-ATT1',
        IF(services.patient_id IS NULL, 0, SUM(IF(DATE(services.visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND services.voided = 0 , 1, 0))) as 'TOTAL'
 FROM
   (SELECT DISTINCT obs.obs_id AS obs_id,
                    obs.voided AS voided,
                    obs.obs_datetime AS datetime,
-                   form_concepts_map.form_name AS form_name,
                    visit.date_started AS visit_date,
                    patient.patient_id AS patient_id,
-                   patient.date_created AS first_visit_date
-   FROM form_concepts_map
-     INNER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
+                   patient.date_created AS first_visit_date,
+                   cv.concept_full_name As concept_name
+   FROM  obs 
+     INNER JOIN concept_view cv ON  obs.concept_id = cv.concept_id
+          AND cv.concept_full_name IN("Family Planning First Visit Card", "Family Planning Revisit")
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
      INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
+     INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
+          AND visit_type.name="OPD"
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
-WHERE form_concepts_map.map_id =10 ) AS services
+ ) AS services
 
 UNION ALL
 SELECT 'A.4.5    TOTAL MCH/FP' AS 'Services',
