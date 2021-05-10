@@ -300,7 +300,9 @@ FROM
                    visit.date_stopped AS date_stopped,
                    patient.date_created AS first_visit_date,
                    person.gender AS patient_gender
-   FROM visit
+  FROM visit
+     INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
+                              AND visit_type.name IN ("OPD")
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
    WHERE visit.voided=0 ) AS client_visits
@@ -349,7 +351,9 @@ SELECT '72' AS 'NO.',' RE-ATTENDANCES'  AS 'DISEASES (New Cases Only) ',
                    patient.date_created AS first_visit_date,
                    person.gender AS patient_gender
    FROM visit
-     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_stopped) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+     INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
+                              AND visit_type.name IN ("OPD")
+     INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
    WHERE visit.voided=0 ) AS client_visits
 

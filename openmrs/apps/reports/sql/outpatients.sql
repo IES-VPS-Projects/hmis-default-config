@@ -43,7 +43,8 @@ FROM
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
-   WHERE observed_age_group.id = 3 ) AS client_visits
+   WHERE observed_age_group.id = 3 
+   GROUP BY patient.patient_id) AS client_visits
 
 UNION ALL
 
