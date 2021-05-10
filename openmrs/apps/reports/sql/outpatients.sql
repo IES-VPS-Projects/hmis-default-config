@@ -18,7 +18,8 @@ FROM
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
-   WHERE observed_age_group.id = 3 ) AS client_visits
+   WHERE observed_age_group.id = 3 
+   GROUP BY patient.patient_id) AS client_visits
 UNION ALL
 
 SELECT 'A.1.2 Over 5 Years Female' AS 'Age Group',
@@ -66,7 +67,8 @@ FROM
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
-   WHERE observed_age_group.id = 2 ) AS client_visits
+   WHERE observed_age_group.id = 2 
+   GROUP BY patient.patient_id) AS client_visits
 
    UNION ALL
 
@@ -90,7 +92,8 @@ FROM
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
-   WHERE observed_age_group.id = 2 ) AS client_visits
+   WHERE observed_age_group.id = 2 
+   GROUP BY patient.patient_id) AS client_visits
 UNION ALL
 
 SELECT 'A.1.5 Over 60 Years' AS 'Age Group',
@@ -113,7 +116,8 @@ FROM
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 60 YEAR), INTERVAL 1 DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL 200 YEAR), INTERVAL 0 DAY))
-   WHERE observed_age_group.id = 1) AS client_visits
+   WHERE observed_age_group.id = 1
+   GROUP BY patient.patient_id) AS client_visits
 UNION ALL
 
 SELECT 'A.1.5 Total General Outpatient' AS 'Age Group',
@@ -139,6 +143,7 @@ FROM
                                                                   DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
                                                                   AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
    WHERE observed_age_group.id = 1
+   GROUP BY patient.patient_id
    ) AS client_visits
 UNION ALL
 
@@ -720,7 +725,7 @@ FROM
 WHERE form_concepts_map.map_id =12 ) AS services
 
 UNION ALL
-SELECT 'A.4.5    TOTAL DENTAL SERVICES' AS 'Services',
+SELECT 'A.5.4    TOTAL DENTAL SERVICES' AS 'Services',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) as 'NEW',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'

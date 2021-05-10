@@ -11,6 +11,8 @@ INNER JOIN person p ON pt.patient_id = p.person_id
 INNER JOIN person_name pn ON p.person_id = pn.person_id
 INNER JOIN visit v ON pt.patient_id = v.patient_id
       AND DATE(v.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
+                AND visit_type.name IN ("OPD")
 LEFT JOIN encounter e ON v.visit_id = e.visit_id
       AND DATE(e.encounter_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
 LEFT JOIN obs ON e.encounter_id = obs.encounter_id
