@@ -713,7 +713,7 @@ FROM
       INNER JOIN visit v ON v.visit_id=e.visit_id 
           AND v.voided=0
       INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
-          AND visit_type.name IN ("OPD")
+          AND visit_type.name IN ("OPD", "DENTAL")
       INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
           AND cv.concept_full_name IN('Dental, Temporary Filling','Dental, Amalgam Filling','Dental, Composite filling')
       WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
@@ -743,7 +743,7 @@ FROM
       INNER JOIN visit v ON v.visit_id=e.visit_id 
           AND v.voided=0
       INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
-          AND visit_type.name IN ("OPD")
+          AND visit_type.name IN ("OPD", "DENTAL")
       INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
           AND cv.concept_full_name IN('Dental, Difficult Extraction', 'Simple Extraction')
       WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
@@ -804,7 +804,7 @@ FROM
         INNER JOIN visit v ON v.visit_id=e.visit_id 
             AND v.voided=0
         INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
-            AND visit_type.name IN ("OPD")
+            AND visit_type.name IN ("OPD", "DENTAL")
         WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
               AND ((SELECT e.encounter_id 
                       FROM encounter e
