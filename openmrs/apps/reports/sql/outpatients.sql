@@ -637,7 +637,7 @@ FROM
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
      INNER JOIN visit ON visit.visit_id=encounter.visit_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND visit.voided = 0
      INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
-          AND visit_type.name="OPD"
+          AND visit_type.name IN ("OPD", "Family Planning")
      INNER JOIN patient ON patient.patient_id=visit.patient_id AND patient.voided = 0
  ) AS services
 
