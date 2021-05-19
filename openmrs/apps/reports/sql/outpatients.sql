@@ -75,7 +75,7 @@ FROM
 
 SELECT 'A.1.4 Children Under 5 Years Female' AS 'Age Group',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) AND client_visits.patient_gender = 'F', 1, 0),0))) as 'NEW',
-       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F', 1, 0),0))) AS 'RE-ATT',
+       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F', 1, 0),0))) AS 'RE-ATT',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' , 1, 0))) as 'TOTAL'
 FROM
   (SELECT DISTINCT patient.patient_id AS patient_id,
