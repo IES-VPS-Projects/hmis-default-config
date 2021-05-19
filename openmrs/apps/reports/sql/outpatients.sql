@@ -357,7 +357,7 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit
      INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
-                              AND visit_type.name IN ("Medical")
+                              AND visit_type.name IN ("MOPC(Medica outpatient clinic)")
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -380,7 +380,7 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit
      INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
-                              AND visit_type.name IN ("Surgical")
+                              AND visit_type.name IN ("SOPC( Surgical outpatient clinic)")
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
@@ -403,7 +403,7 @@ FROM
                    observed_age_group.sort_order AS sort_order
    FROM visit
      INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
-                              AND visit_type.name IN ("Pediatric")
+                              AND visit_type.name IN ("POPC( Paediatric outpatient clinic)")
      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
