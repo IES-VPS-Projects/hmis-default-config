@@ -729,7 +729,7 @@ FROM
       INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
           AND cv.concept_full_name IN('Dental, Temporary Filling','Dental, Amalgam Filling','Dental, Composite filling')
       WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
-        GROUP BY pt.patient_id) AS client_visits
+        GROUP BY o.order_id) AS client_visits
 UNION ALL
 SELECT 'A.4.5.3    Extractions' AS 'Services',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) as 'NEW',
@@ -759,7 +759,7 @@ FROM
       INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
           AND cv.concept_full_name IN('Dental, Difficult Extraction', 'Simple Extraction')
       WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
-        GROUP BY pt.patient_id) AS client_visits
+        GROUP BY o.order_id) AS client_visits
 
 UNION ALL
 
@@ -823,7 +823,7 @@ FROM
                       INNER JOIN obs o ON o.encounter_id=e.encounter_id
                           AND o.concept_id = (select concept_id from concept_view where concept_full_name='Dental Form Template')
                       WHERE e.visit_id=v.visit_id ) IS NULL)
-          GROUP BY pt.patient_id) AS client_visits
+          GROUP BY o.order_id) AS client_visits
 
 )AS client_visits2
 
