@@ -184,7 +184,7 @@ angular.module('bahmni.common.displaycontrol.custom')
         });
 
         $scope.goToListView = function () {
-            $window.open('/bahmni/appointments/#/home/manage/appointments/list');
+            $window.open('/hmis/appointments/#/home/manage/appointments/list');
         };
     };
     return {

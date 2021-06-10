@@ -1,11 +1,11 @@
 {
   "homePage": {
     "header_text": "<b>WELCOME TO<br />KIRINYAGA HOSPITAL MANAGEMENT  SYSTEM",
-    "logo": "/bahmni/images/bahmniLogoFull.png",
+    "logo": "/hmis/images/bahmniLogoFull.png",
     "title_text": " "
   },
   "loginPage": {
-    "logo": "/bahmni/images/bahmniLogoFull.png",
+    "logo": "/hmis/images/bahmniLogoFull.png",
     "showHeaderText": true,
     "showTitleText": false
   },
