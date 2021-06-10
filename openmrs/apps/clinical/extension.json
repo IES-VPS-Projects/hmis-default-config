@@ -72,7 +72,7 @@
 		"extensionParams": {
 			"searchHandler": "emrapi.sqlSearch.vitalsNotTaken",
 			"translationKey": "VITALS NOT TAKEN",
-			"forwardUrl": "/bahmni/registration#/patient/{{patientUuid}}/visit"
+			"forwardUrl": "/hmis/registration#/patient/{{patientUuid}}/visit"
 		},
 		"label": "VITALS NOT TAKEN",
 		"order": 1,
@@ -85,7 +85,7 @@
 		"extensionParams": {
 			"searchHandler": "emrapi.sqlSearch.vitalsTaken",
 			"translationKey": "VITALS TAKEN",
-			"forwardUrl": "/bahmni/registration#/patient/{{patientUuid}}/visit"
+			"forwardUrl": "/hmis/registration#/patient/{{patientUuid}}/visit"
 		},
 		"label": "VITALS TAKEN",
 		"order": 1,
