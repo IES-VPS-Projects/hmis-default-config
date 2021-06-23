@@ -276,7 +276,7 @@
           "type": "MRSGeneric",
           "config": {
             "forDataAnalysis": true,
-            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/maternity.sql"
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_maternity.sql"
           }
         },
         {

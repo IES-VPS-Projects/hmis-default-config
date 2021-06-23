@@ -154,6 +154,13 @@ SELECT 'A.2  CASUALTY' AS 'Age Group',
 
 UNION ALL
 
+SELECT '' AS 'Age Group',
+     ' ' as 'NEW',
+     ' ' as 'RE-ATT',
+     ' ' as 'TOTAL'
+
+    UNION ALL
+
 SELECT 'A.3  Special Clinics(if recorded separately from General Clinics) ' AS 'Age Group',
      ' ' as 'NEW',
      ' ' as 'RE-ATT',
@@ -980,7 +987,7 @@ FROM
                    form_concepts_map.form_name AS form_name
    FROM form_concepts_map
      LEFT OUTER JOIN obs ON obs.concept_id = form_concepts_map.concept_id
-   WHERE form_concepts_map.map_id =12 ) AS services
+   WHERE form_concepts_map.map_id =0 ) AS services
 
 UNION ALL
 
