@@ -122,9 +122,9 @@ FROM
 UNION ALL
 
 SELECT 'A.1.5 Total General Outpatient' AS 'Age Group',
-       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date)  AND (client_visits.age < 60) AND (client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M'), 1, 0),0))) as 'NEW',
-       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) AND (client_visits.age < 60),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
-       IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.age < 60 , 1, 0))) as 'TOTAL'
+       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date)  AND (client_visits.age < 300) AND (client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M'), 1, 0),0))) as 'NEW',
+       IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) AND (client_visits.age < 300),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
+       IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.age < 300 , 1, 0))) as 'TOTAL'
 FROM
   (SELECT DISTINCT patient.patient_id AS patient_id,
                    observed_age_group.name AS age_group,
