@@ -572,5 +572,18 @@
       "label": "OOPC Patients",
       "order": 1,
       "requiredPrivilege": "OOPC queue"
+    },
+    "bahmniClinicalPatientsSearchGOPC":{
+      "id": "bahmni.clinical.patients.search.activeGOPCPatients",
+      "extensionPointId": "org.bahmni.patient.search",
+      "type": "config",
+      "extensionParams": {
+        "searchHandler": "emrapi.sqlSearch.gopc",
+        "translationKey": "GOPC Patients",
+        "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      },
+      "label": "GOPC Patients",
+      "order": 1,
+      "requiredPrivilege": "GOPC queue"
     }
 }
