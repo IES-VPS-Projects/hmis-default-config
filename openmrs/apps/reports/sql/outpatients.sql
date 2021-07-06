@@ -1001,7 +1001,7 @@ SELECT 'A.6     Total Outpatient Services' AS 'Age Group',
        SUM(client_visits2.TOTAL) as 'TOTAL'
 FROM
   (
-    SELECT 'A.1.5 Total General Outpatient' AS 'Age Group',
+    SELECT 'A.1.5 TOTAL GENERAL OUTPATIENT' AS 'Age Group',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date)  AND (client_visits.age < 300) AND (client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M'), 1, 0),0))) as 'NEW',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) AND (client_visits.age < 300),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.age < 300 , 1, 0))) as 'TOTAL'
@@ -1028,21 +1028,27 @@ FROM
 
         UNION ALL 
 
-    SELECT 'A.3.8    TOTAL SPECIAL CLINICS' AS 'Services',
+    SELECT 'A.3.8    TOTAL SPECIAL CLINICS ' AS 'Services',
+  SUM(client_visits3.NEW) AS 'NEW',
+  SUM(client_visits3.`RE-ATT`) AS 'RE-ATT',
+  SUM(client_visits3.TOTAL) AS 'TOTAL'
+FROM (
+SELECT 'A.3.8    Total Special Clinics -1' AS 'Services',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0))) as 'NEW',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0))) AS 'RE-ATT',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
 FROM
-  (SELECT DISTINCT patient.patient_id AS patient_id,
+  (SELECT patient.patient_id AS patient_id,
                    patient.date_created AS first_visit_date,
                    person.gender AS patient_gender,
                    visit.date_started AS visit_date,
-     obs.obs_datetime
+                   obs.obs_datetime
 
    FROM  obs
      INNER JOIN concept_view cv ON cv.concept_id = obs.concept_id
-           AND cv.concept_full_name IN ("Chronic Kidney Disease, Intake", "Chronic Kidney Disease, Progress", "Nutrition","Obstetrics", "Gynaecology",
-                                        "Physiotherapy Template", "Occupational Therapy Template" , "ENT Clinic", "Eye Clinic", "Leprosy, Template", "Orthopedic Examination")
+           AND cv.concept_full_name IN ("ENT Clinic", "Eye Clinic", "Leprosy, Template", "Tuberculosis Intake Template", "Tuberculosis Followup Template",
+"Mental Health", "Orthopedic Examination", "Orthopedic and Trauma Services Form", "Occupational Therapy Template",
+"Physiotherapy Template", "Obstetrics", "Gynaecology", "Nutrition", "Chronic Kidney Disease, Intake", "Chronic Kidney Disease, Progress")
            AND obs.voided = 0
      INNER JOIN encounter ON encounter.encounter_id=obs.encounter_id
      INNER JOIN visit ON visit.visit_id = encounter.visit_id
@@ -1050,9 +1056,35 @@ FROM
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
   ) AS client_visits
 
+  UNION ALL
+
+  SELECT 'A.3.8    Total Special Clinics -2' AS 'Services',
+        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) AND (client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M'), 1, 0),0))) as 'NEW',
+        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
+        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
+  FROM
+    (SELECT patient.patient_id AS patient_id,
+                    observed_age_group.name AS age_group,
+                    observed_age_group.id as age_group_id,
+                    patient.date_created AS first_visit_date,
+                    person.gender AS patient_gender,
+                    visit.date_started AS visit_date,
+                    observed_age_group.sort_order AS sort_order
+    FROM visit
+      INNER JOIN visit_type ON visit_type.visit_type_id = visit.visit_type_id
+                                AND visit_type.name IN ("CCC", "OOPC(Orthopedic outpatient clinic)", "MOPC(Medica outpatient clinic)", "SOPC( Surgical outpatient clinic)",
+"POPC( Paediatric outpatient clinic)", "GOPC(Gynaecology outpatient clinic)", "Oncology")
+      INNER JOIN patient ON visit.patient_id = patient.patient_id AND DATE(visit.date_started) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND visit.voided = 0
+      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
+      RIGHT OUTER JOIN reporting_age_group AS observed_age_group ON
+                                                                    DATE(visit.date_started) BETWEEN (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.min_years YEAR), INTERVAL observed_age_group.min_days DAY))
+                                                                    AND (DATE_ADD(DATE_ADD(person.birthdate, INTERVAL observed_age_group.max_years YEAR), INTERVAL observed_age_group.max_days DAY))
+    WHERE observed_age_group.id = 1) AS client_visits
+)client_visits3
+
       UNION ALL
 
-  SELECT 'A.4.5    TOTAL MCH/FP' AS 'Services',
+SELECT 'A.4.5    TOTAL MCH/FP' AS 'Services',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE),IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) AND (client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M'), 1, 0),0))) as 'NEW',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
@@ -1076,7 +1108,12 @@ FROM
 
       UNION ALL
 
-      SELECT 'A.5.4.1    TOTAL DENTAL-1' AS 'Services',
+SELECT  'A.5.4    TOTAL DENTAL SERVICES' AS 'Services',
+  SUM(client_visits4.NEW) AS 'NEW',
+  SUM(client_visits4.`RE-ATT`) AS 'RE-ATT',
+  SUM(client_visits4.TOTAL) AS 'TOTAL'
+FROM (
+SELECT 'A.5.4    TOTAL DENTAL SERVICES -1' AS 'Services',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date) , 1, 0))) as 'NEW',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date) , 1, 0))) AS 'RE-ATT',
   IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
@@ -1095,43 +1132,63 @@ FROM
      INNER JOIN visit ON visit.visit_id = encounter.visit_id
      INNER JOIN patient ON obs.person_id = patient.patient_id AND DATE(obs.obs_datetime) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE) AND patient.voided = 0 AND obs.voided = 0
      INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
-  GROUP BY patient.patient_id
+      and  patient.patient_id NOT IN (SELECT DISTINCT 
+                pt.patient_id
+                FROM orders o
+                    INNER JOIN order_type ot ON o.order_type_id = ot.order_type_id
+                        AND ot.name = "Dental Order"
+                    INNER JOIN patient pt ON o.patient_id=pt.patient_id
+                        AND pt.voided=0
+                    INNER JOIN person p ON p.person_id=pt.patient_id
+                        AND p.voided=0
+                    INNER JOIN encounter e ON e.encounter_id=o.encounter_id
+                        AND e.voided = 0
+                    INNER JOIN visit v ON v.visit_id=e.visit_id 
+                        AND v.voided=0
+                    INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
+                        AND visit_type.name IN ("OPD", "DENTAL")
+                    INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
+                        AND cv.concept_full_name IN('Dental, Temporary Filling','Dental, Amalgam Filling','Dental, Composite filling'
+                                                    'Dental, Difficult Extraction', 'Simple Extraction')
+                  WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+                  )
+       GROUP BY patient.patient_id
   ) AS client_visits
 
   UNION ALL
 
-      SELECT 'A.5.4.2    TOTAL DENTAL-2' AS 'Services',
+  SELECT 'A.5.4    TOTAL DENTAL SERVICES -2' AS 'Services',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) = DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) as 'NEW',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(DATE(client_visits.first_visit_date) < DATE(client_visits.visit_date),IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M', 1, 0),0))) AS 'RE-ATT',
        IF(client_visits.patient_id IS NULL, 0, SUM(IF(client_visits.patient_gender = 'F' OR client_visits.patient_gender = 'M' , 1, 0))) as 'TOTAL'
-  FROM(
-  SELECT DISTINCT  o.order_id,
-                  ot.name,
-                  e.voided AS voided,
-                  pt.patient_id,
-                  pt.date_created AS first_visit_date,
-                  v.date_created AS visit_date,
-                  p.gender AS patient_gender
-    FROM orders o
-        INNER JOIN order_type ot ON o.order_type_id = ot.order_type_id
-            AND ot.name = "Dental Order"
-        INNER JOIN patient pt ON o.patient_id=pt.patient_id
-            AND pt.voided=0
-        INNER JOIN person p ON p.person_id=pt.patient_id
-            AND p.voided=0
-        INNER JOIN encounter e ON e.encounter_id=o.encounter_id
-            AND e.voided = 0
-        INNER JOIN visit v ON v.visit_id=e.visit_id 
-            AND v.voided=0
-        INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
-            AND visit_type.name IN ("OPD", "DENTAL")
-        WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
-              AND ((SELECT e.encounter_id 
-                      FROM encounter e
-                      INNER JOIN obs o ON o.encounter_id=e.encounter_id
-                          AND o.concept_id = (select concept_id from concept_view where concept_full_name='Dental Form Template')
-                      WHERE e.visit_id=v.visit_id ) IS NULL)
-          GROUP BY o.order_id) AS client_visits
+FROM
+  (SELECT DISTINCT  o.order_id,
+                ot.name,
+                e.voided AS voided,
+                pt.patient_id,
+                pt.date_created AS first_visit_date,
+                v.date_created AS visit_date,
+                p.gender AS patient_gender
+  FROM orders o
+      INNER JOIN order_type ot ON o.order_type_id = ot.order_type_id
+          AND ot.name = "Dental Order"
+      INNER JOIN patient pt ON o.patient_id=pt.patient_id
+          AND pt.voided=0
+      INNER JOIN person p ON p.person_id=pt.patient_id
+          AND p.voided=0
+      INNER JOIN encounter e ON e.encounter_id=o.encounter_id
+          AND e.voided = 0
+      INNER JOIN visit v ON v.visit_id=e.visit_id 
+          AND v.voided=0
+      INNER JOIN visit_type ON visit_type.visit_type_id = v.visit_type_id
+          AND visit_type.name IN ("OPD", "DENTAL")
+      INNER JOIN concept_view cv ON cv.concept_id=o.concept_id
+          AND cv.concept_full_name IN('Dental, Temporary Filling','Dental, Amalgam Filling','Dental, Composite filling',
+                                'Dental, Difficult Extraction', 'Simple Extraction')
+      WHERE  DATE(o.date_created) BETWEEN CAST('#startDate#' AS DATE) AND CAST('#endDate#' AS DATE)
+        GROUP BY o.order_id) AS client_visits
+
+)AS client_visits4
 
   )client_visits2
 
