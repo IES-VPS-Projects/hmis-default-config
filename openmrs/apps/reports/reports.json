@@ -318,6 +318,22 @@
             "forDataAnalysis": true,
             "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/mortury.sql"
           }
+        },
+        {
+          "name": "MOH 717 MEDICAL RECORDS ISSUED",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_medical_records.sql"
+          }
+        },
+        {
+          "name": "MOH 717 FINANCE",
+          "type": "MRSGeneric",
+          "config": {
+            "forDataAnalysis": true,
+            "sqlPath": "/var/www/bahmni_config/openmrs/apps/reports/sql/717_finance.sql"
+          }
         }
       ]
     }
